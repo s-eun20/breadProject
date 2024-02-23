@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/question.css" />
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u4nl6r24jx"
+    ></script>
+    <title>Jejucafe</title>
+  </head>
+  <body>
+    <div id="question">
+      <h1>You don't know about Jeju cafe!</h1><br>
+      <div class="custom-select">
+        <input type="radio" id="cafeType1" value="1" name="type" />
+        <label for="cafeType1">애월</label>
+        <input type="radio" id="cafeType2" value="2" name="type" />
+        <label for="cafeType2">구좌</label>
+        <input type="radio" id="cafeType3" value="3" name="type" />
+        <label for="cafeType3">안덕</label>
+        <input type="radio" id="cafeType4" value="4" name="type" />
+        <label for="cafeType4">성산</label>
+      </div>
+      <br />
+
+      <div class="question-container">
+        <form id="form1">
+          <h2>
+            <span class="q_1">01. </span>가슴으로 낳아 돈으로 기른 자식이랑 같이
+            왔나요? (반려동물)
+          </h2>
+          <div class="radioForm">
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q1Yes"
+              name="q1"
+              value="애기두고 혼자 어떻게 와(네)"
+              onclick="selectAnswer('q1Yes')"
+            />
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q1No"
+              name="q1"
+              value="혼자쓸쓸히(아니요)"
+              onclick="selectAnswer('q1No')"
+            />
+          </div>
+        </form>
+      </div>
+
+      <br />
+
+      <div class="question-container">
+        <form id="form2">
+          <h2><span class="q_1">02. </span>차를 가지고 오셨나요?</h2>
+          <div class="radioForm">
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q2Yes"
+              name="q2"
+              value="예압! 암 베스트 드라이버"
+              onclick="selectAnswer('q2Yes')"
+            />
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q2No"
+              name="q2"
+              value="여행의 감성은 뚜벅이!"
+              onclick="selectAnswer('q2No')"
+            />
+          </div>
+        </form>
+      </div>
+
+      <br />
+
+      <div class="question-container">
+        <form id="form3">
+          <h2>
+            <span class="q_1">03. </span>제주에서 보고 싶은 자연이 있나요요?
+          </h2>
+          <div class="radioForm">
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q3Yes"
+              name="q3"
+              value="제주는 오션뷰지"
+              onclick="selectAnswer('q3Yes')"
+            />
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q3No"
+              name="q3"
+              value="나는 산이 좋아!"
+              onclick="selectAnswer('q3No')"
+            />
+          </div>
+        </form>
+      </div>
+
+      <br />
+
+      <div class="question-container">
+        <form id="form4">
+          <h2><span class="q_1">04. </span>식사는 하셨어~? (수리남)</h2>
+          <div class="radioForm">
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q4Yes"
+              name="q4"
+              value="아니! 배고파(브런치,빵)"
+              onclick="selectAnswer('q4Yes')"
+            />
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q4No"
+              name="q4"
+              value="어! 음료 추천해줘"
+              onclick="selectAnswer('q4No')"
+            />
+          </div>
+        </form>
+      </div>
+
+      <br />
+
+      <div class="question-container">
+        <form id="form5">
+          <h2>
+            <span class="q_1">05. </span>사진이 잘나오는 메뉴를 원하시나요?
+          </h2>
+          <div class="radioForm">
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q5Yes"
+              name="q5"
+              value="시그니처 메뉴 무조건 !"
+              onclick="selectAnswer('q5Yes')"
+            />
+            <input
+              type="button"
+              class="btn btn-outline-success btn-custom-font"
+              id="q5No"
+              name="q5"
+              value="그냥 기본도 괜춘"
+              onclick="selectAnswer('q5No')"
+            />
+          </div>
+        </form>
+      </div>
+
+      <br />
+      <button onclick="showCafeInfo()">카페 찾기</button>
+      <br><br><br><br><br><br>
+    </div>
+
+    <div id="result">
+      <h1>You know the cafe in Jeju</h1>
+      <div id="placeInfo" class="card"></div>
+    </div>
+
+    <script>
+      var cafeData; 
+
+      function selectAnswer(buttonId) {
+        var button = document.getElementById(buttonId);
+        button.classList.toggle("selected");
+      }
+
+      fetch("cafe_data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          cafeData = data;
+        })
+        .catch((error) => console.error("Error fetching cafe data:", error));
+
+      function showCafeInfo() {
+        const selectedType = document.querySelector(
+          'input[name="type"]:checked'
+        ).value;
+        // var selectedType = document.getElementById("cafeType").value;
+        var q1Answer = document
+          .getElementById("q1Yes")
+          .classList.contains("selected")
+          ? "T"
+          : "F";
+        var q2Answer = document
+          .getElementById("q2Yes")
+          .classList.contains("selected")
+          ? "T"
+          : "F";
+        var q3Answer = document
+          .getElementById("q3Yes")
+          .classList.contains("selected")
+          ? "T"
+          : "F";
+        var q4Answer = document
+          .getElementById("q4Yes")
+          .classList.contains("selected")
+          ? "T"
+          : "F";
+        var q5Answer = document
+          .getElementById("q5Yes")
+          .classList.contains("selected")
+          ? "T"
+          : "F";
+
+        var matchingCafes = cafeData.filter(
+          (cafe) =>
+            cafe.type == selectedType &&
+            cafe.animal == q1Answer &&
+            cafe.car == q2Answer &&
+            cafe.view == q3Answer &&
+            cafe.br == q4Answer &&
+            cafe.drinks == q5Answer
+        );
+
+        if (matchingCafes.length > 0) {
+          var randomIndex = Math.floor(Math.random() * matchingCafes.length);
+          var selectedCafe = matchingCafes[randomIndex];
+
+          var placeInfoDiv = document.getElementById("placeInfo");
+          placeInfoDiv.innerHTML = `
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">${selectedCafe.name}</h5>
+                <h6 class="card-add">${selectedCafe.location}</h6>
+                <img src ="${selectedCafe.img}" class = "card-img" "> <br><br>
+                <h5 class="card-title">위치</h5><br>
+                <div id="map" class="card-map" ></div><br>
+                <a href="${selectedCafe.url}" class="btn btn-outline-success btn-custom-font" target="_blank">카페 바로가기</a>
+              </div>
+            </div>
+          `;
+
+          var mapDiv = document.getElementById("map");
+          var map = new naver.maps.Map(mapDiv, {
+            center: new naver.maps.LatLng(selectedCafe.lat, selectedCafe.lng),
+            zoom: 15,
+          });
+          var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(selectedCafe.lat, selectedCafe.lng),
+            map: map,
+          });
+
+          document.getElementById("question").style.display = "none";
+          document.getElementById("result").style.display = "block";
+        } else {
+          var q1MatchingCafes = cafeData.filter(
+            (cafe) => cafe.type == selectedType && cafe.animal == q1Answer
+          );
+          var q2MatchingCafes = cafeData.filter(
+            (cafe) => cafe.type == selectedType && cafe.car == q2Answer
+          );
+          var q3MatchingCafes = cafeData.filter(
+            (cafe) => cafe.type == selectedType && cafe.view == q3Answer
+          );
+          var q4MatchingCafes = cafeData.filter(
+            (cafe) => cafe.type == selectedType && cafe.br == q4Answer
+          );
+          var q5MatchingCafes = cafeData.filter(
+            (cafe) => cafe.type == selectedType && cafe.drinks == q5Answer
+          );
+
+          if (q1MatchingCafes.length > 0) {
+            var randomIndex = Math.floor(
+              Math.random() * q1MatchingCafes.length
+            );
+            var selectedCafe = q1MatchingCafes[randomIndex];
+          } else if (q2MatchingCafes.length > 0) {
+            var randomIndex = Math.floor(
+              Math.random() * q2MatchingCafes.length
+            );
+            var selectedCafe = q2MatchingCafes[randomIndex];
+          } else if (q3MatchingCafes.length > 0) {
+            var randomIndex = Math.floor(
+              Math.random() * q3MatchingCafes.length
+            );
+            var selectedCafe = q3MatchingCafes[randomIndex];
+          } else if (q4MatchingCafes.length > 0) {
+            var randomIndex = Math.floor(
+              Math.random() * q4MatchingCafes.length
+            );
+            var selectedCafe = q4MatchingCafes[randomIndex];
+          } else if (q5MatchingCafes.length > 0) {
+            var randomIndex = Math.floor(
+              Math.random() * q5MatchingCafes.length
+            );
+            var selectedCafe = q5MatchingCafes[randomIndex];
+          } else {
+            // 모든 조건을 만족하는 카페가 없을 경우, 전체 카페 중에서 랜덤으로 하나 선택
+            var randomIndex = Math.floor(Math.random() * cafeData.length);
+            var selectedCafe = cafeData[randomIndex];
+          }
+
+          var placeInfoDiv = document.getElementById("placeInfo");
+          placeInfoDiv.innerHTML = `
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${selectedCafe.name}</h5>
+                  <h6 class="card-add">${selectedCafe.location}</h6>
+                  <img src ="${selectedCafe.img}" class = "card-img" > <br><br>
+                  <h5 class="card-title">위치</h5><br>
+                  <div id="map" class="card-map"></div><br>
+                  <a href="${selectedCafe.url}" class="btn btn-outline-success btn-custom-font" target="_blank">카페 바로가기</a>
+                </div>
+              </div>
+            `;
+
+          var mapDiv = document.getElementById("map");
+          var map = new naver.maps.Map(mapDiv, {
+            center: new naver.maps.LatLng(selectedCafe.lat, selectedCafe.lng),
+            zoom: 15,
+          });
+          var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(selectedCafe.lat, selectedCafe.lng),
+            map: map,
+          });
+          document.getElementById("question").style.display = "none";
+          document.getElementById("result").style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
