@@ -17,6 +17,4 @@
 <img src= "https://github.com/s-eun20/s-eun20/assets/109144010/1b163eab-aa45-4d3d-b290-eeaa3e7f6a15" width="200">
 <img src= "https://github.com/s-eun20/s-eun20/assets/109144010/72dd2f74-accd-4e57-b262-45c95215d90e" width="200">
 <img src= "https://github.com/s-eun20/s-eun20/assets/109144010/c2daeee3-db2f-4d92-a3ac-c81b1c4463a3" width="200">
-|:---:|:---:|
-|시작 화면|사용자 정보 화면|
  
