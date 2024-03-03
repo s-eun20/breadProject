@@ -9,12 +9,12 @@
 
 
 # 개발 환경 및 언어
- <img src="https://img.shields.io/badge/html5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />&nbsp
- <img src="https://img.shields.io/badge/css3-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white" />&nbsp
+ <img src="https://img.shields.io/badge/html5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />
+ <img src="https://img.shields.io/badge/css3-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white" />
 
 
 # 프로젝트 시현
-
+<img src= "https://github.com/s-eun20/s-eun20/assets/109144010/1b163eab-aa45-4d3d-b290-eeaa3e7f6a15" width="200">
 ![첫번째 화면](https://github.com/s-eun20/s-eun20/assets/109144010/1b163eab-aa45-4d3d-b290-eeaa3e7f6a15)
 ![두번째화면](https://github.com/s-eun20/s-eun20/assets/109144010/72dd2f74-accd-4e57-b262-45c95215d90e)
 ![세번째 화면](https://github.com/s-eun20/s-eun20/assets/109144010/c2daeee3-db2f-4d92-a3ac-c81b1c4463a3)
